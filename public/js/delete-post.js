@@ -5,14 +5,28 @@ async function deleteFormHandler(event) {
     window.location.toString().split('/').length - 1
   ];
 
-  const response = await fetch(`/api/posts/${id}`, {
-    method: 'DELETE',
-    body: JSON.stringify({
-      post_id: id
-    }),
+  // try and get the comment id based on post id
+  //const resComment = await fetch(`/api/comments/`)
+  const resComment = await fetch(`/api/comments/${id}`, {
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json'
     }
+  })
+    .then(response => response.json());
+
+  for (var i = 0; i < resComment.length; i++){
+    console.log(resComment[i].id);
+    await fetch(`/api/comments/${resComment[i].id}`, {
+      method: 'DELETE'
+    });
+
+    console.log(`Deleted Comment ${resComment[i].id}`);
+  }
+
+
+  const response = await fetch(`/api/posts/${id}`, {
+    method: 'DELETE'
   });
 
   if (response.ok) {
@@ -20,7 +34,7 @@ async function deleteFormHandler(event) {
   } else {
     alert(response.statusText);
   }
-
 }
 
-document.querySelector('.delete-post-btn').addEventListener('click', deleteFormHandler);
+document.querySelector('.delete-post-btn')
+  .addEventListener('click', deleteFormHandler);
