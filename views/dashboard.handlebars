@@ -1,11 +1,35 @@
+<section>
+   <h2>Create New Post</h2>
+
+   <form class="new-post-form">
+      <div>
+         <label for="post-title">Title</label>
+         <input type="text" id="post-title" name="post-title" />
+      </div>
+      <div>
+         <label for="post-url">Tell us more</label>
+         <input type="text" id="post-url" name="post-url" />
+      </div>
+      <button type="submit" class="btn">Create</button>
+   </form>
+</section>
+
 {{#if posts.length}}
 <section>
-  <h2>Post History</h2>
-    {{#each posts as |post|}}
-      {{> dashboard-postinfo post}}
-    {{/each}}
-
+   <h2>Your Posts</h2>
+   <div>
+      <ol>
+      {{#each posts as |post|}}
+         <li>
+            {{> post-info post }}
+            <button class="edit">
+               <a href="/dashboard/edit/{{post.id}}">Edit post</a>
+            </button>
+         </li>
+      {{/each}}
+      </ol>
+   </div>
 </section>
 {{/if}}
 
-<button type="submit" class="btn"><a class="link" href="/dashboard/new">Add New Post</a></button>
+<script src="/public/js/add-post.js"></script>
