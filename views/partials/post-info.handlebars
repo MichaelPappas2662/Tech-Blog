@@ -1,9 +1,20 @@
-<div class="card mb-5">
-    <div class="card-header bg-secondary">
-        <h4 class="card-title"><a class="text-info" href="/post/{{id}}">{{title}}</a></h4>
-        <h6 class="card-subtitle mb-2 text-light">Posted by {{user.username}} on {{created_at}}</h6>
+<article class="post">
+  <div class="title card">
+    <div class="card-header">
+      <h3 class="card-title">{{title}}</h3>
     </div>
     <div class="card-body">
-        <p class="card-text">{{content}}</p>
+      <p class="card-text ">{{post_url}}</p>
     </div>
-</div>
+    
+  
+    <div class="meta card-footer">
+      {{vote_count}} {{format_plural "point" vote_count}} by {{user.username}} on
+      {{format_date created_at}}
+      |
+      <a class="card-footer" href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+      
+    </div>
+
+  </div>
+</article>
