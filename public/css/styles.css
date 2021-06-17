@@ -1,6 +1,309 @@
-.form-signin {
-    width: 100%;
-    max-width: 330px;
-    padding: 15px;
-    margin: auto;
+:root {
+  --primary-color: #A7C0CD;
+  --secondary-color: #506CF0;
+  --tertiary-color: #FE7860;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+
+html {
+  padding: 0;
+  margin: 0;
+  color: #ffffff;
+  background-color: var(--primary-color);
+  position: relative;
+}
+
+body {
+  background-color: whitesmoke;
+}
+
+.main-body {
+  min-height: 100vh;
+}
+
+p {
+  color: gray;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color .1s;
+}
+
+a:hover {
+  color: black;
+}
+
+button {
+  background-color: var(--primary-color);
+  border: 0;
+  padding: 1%;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  transition: background-color .1s;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+button:hover {
+  background-color:rgb(0, 0, 0, .6);
+  color: rgb(255, 255, 255);
+}
+
+.dashboard-btn {
+  color: var(--primary-color);
+} 
+
+.post-list {
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+textarea, input {
+  padding: .5%;
+  border-radius: 5px;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+textarea:focus, input:focus {
+  outline: none;
+  border: 1px solid #ffffff;
+}
+
+textarea {
+  max-width: 60%;
+  min-height: 100px;
+}
+
+form > div {
+  margin-bottom: 2%;
+}
+
+form label {
+  display: block;
+}
+
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1%;
+  background-color: var(--secondary-color);
+  border-bottom: 1px solid var(--tertiary-color);
+}
+
+header h1 {
+  font-size: 3em;
+}
+
+main {
+  flex: 1;
+  padding: 2% 4%;
+}
+
+.btn-no-style {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 100%;
+  font-weight: bold;
+  transition: color .1s;
+  margin-left: 16px;
+}
+
+.btn-no-style:hover {
+  background-color:rgb(0, 0, 0, .6);
+  color: var(--tertiary-color);
+}
+
+.delete-post-btn {
+  background-color:rgba(255, 255, 255, 0.6);
+  color: rgb(0, 0, 0);
+}
+
+.delete-post-btn:hover {
+  background-color:rgb(0, 0, 0, .6);
+  color: var(--tertiary-color);
+}
+
+.post {
+  margin-bottom: 2%;
+  line-height: 150%;
+}
+
+.post .title span {
+  font-style: italic;
+  font-size: 90%;
+  color: #ff0000;
+}
+
+.upvote-btn {
+  background-color:rgba(255, 255, 255, 0.6);
+  color: rgb(0, 0, 0);
+  transition: background-color .1s;
+}
+
+.edit {
+  border-radius: 10px;
+  padding-top: 5px;
+}
+
+.upvote-btn:hover {
+  background-color:rgb(0, 0, 0, .6);
+  color: rgb(255, 255, 255);
+}
+
+.comment-form {
+  margin-bottom: 5%;
+}
+
+
+
+.comment {
+  padding: 1%;
+  margin-bottom: 1%;
+  background-color:rgba(255, 255, 255, 0.6);
+  color: rgb(0, 0, 0);
+  width: 100vw;
+}
+
+.comment:nth-child(odd) {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.comment .meta {
+  font-size: 90%;
+  margin-bottom: .5%;
+  opacity: .6;
+}
+
+#comment-body {
+  opacity: 80%;
+  color: rgb(0, 0, 0);
+  padding: 5px;
+  margin: 5px;
+}
+
+.submit-btn {
+  color: rgb(0, 0, 0);
+  background-color: var(--tertiary-color);
+}
+
+.upvote-btn {
+  color: rgb(0, 0, 0);
+}
+
+h2,
+label,
+li
+{
+  color: black;
+}
+
+.new-post-form input {
+  width: 300px;
+}
+
+.edit-title {
+  color: black;
+}
+
+.edit-post-form {
+  margin-bottom: 5%;
+  color: black;
+}
+
+.edit-post-form a {
+  color: black;
+}
+
+.edit-post-form a:hover{
+  color: #000000;
+}
+
+.btn {
+  color: white;
+  background-color: var(--tertiary-color);
+  font-weight: bold;
+}
+
+.btn:hover{
+  color: #ffffff;
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--secondary-color);
+  border-top: 1px solid #ffffff;
+  padding: 1%;
+  text-decoration: none;
+}
+
+footer h3 {
+  color: #ffffff;
+}
+
+footer a {
+  color: #ffffff;
+}
+
+footer a:hover{
+  color: #000000;
+}
+
+.post {
+  background-color: var(--primary-color);
+  margin: auto;
+  justify-content: center;
+  color: black;
+  border: 1px solid #ffffff;
+  opacity: 80%;
+}
+
+.post p {
+  color: black;
+}
+
+.post a{
+  color: #000000;
+}
+
+.card a:hover {
+  color: #ffffff;
+  text-shadow: 1px 1px #000000;
+
+}
+
+.meta a {
+  color: #000000;
+  text-shadow: 1px 1px #ffffff;
+
+}
+
+.meta a:hover {
+  color: #ffffff;
+  text-shadow: 1px 1px #000000;
+
+}
+
+.card {
+  opacity: 100%;
+  background-color: var(--primary-color);
+}
+
+
