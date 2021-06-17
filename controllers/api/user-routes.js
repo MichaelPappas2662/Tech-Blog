@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post, Comment } = require('../../models');
+const { Comment, User, Post } = require('../../models');
 const withAuth = require('../../util/auth');
 
 // GET /api/users
@@ -18,15 +18,16 @@ router.get('/', (req, res) => {
 // GET /api/users/1
 router.get('/:id', (req, res) => {
   User.findOne({
-    attributes: { exclude: ['password']},
+    attributes: { exclude: ['password'] },
     where: {
       id: req.params.id
     },
     include: [
       {
         model: Post,
-        attributes: ['id', 'title', 'post_content', 'created_at']
+        attributes: ['id', 'title', 'post_url', 'created_at']
       },
+      // include the Comment model here:
       {
         model: Comment,
         attributes: ['id', 'comment_text', 'created_at'],
@@ -36,7 +37,6 @@ router.get('/:id', (req, res) => {
         }
       }
     ]
-
   })
     .then(dbUserData => {
       if (!dbUserData) {
@@ -56,24 +56,23 @@ router.post('/', (req, res) => {
   User.create({
     username: req.body.username,
     email: req.body.email,
-    password: req.body.password,
-    twitter: req.body.twitter,
-    github: req.body.github
+    password: req.body.password
   })
     .then(dbUserData => {
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
         req.session.username = dbUserData.username;
-        req.session.twitter = dbUserData.twitter;
-        req.session.github = dbUserData.github;
         req.session.loggedIn = true;
 
         res.json(dbUserData);
       });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
     });
 });
 
-// LOGIN
 router.post('/login', (req, res) => {
   User.findOne({
     where: {
@@ -96,8 +95,6 @@ router.post('/login', (req, res) => {
       // declare session variables
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
-      req.session.twitter = dbUserData.twitter;
-      req.session.github = dbUserData.github;
       req.session.loggedIn = true;
 
       res.json({ user: dbUserData, message: 'You are now logged in!' });
@@ -105,8 +102,8 @@ router.post('/login', (req, res) => {
   });
 });
 
-
-router.post('/logout', (req, res) => {
+// allow users to log out
+router.post('/logout', withAuth, (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -126,7 +123,7 @@ router.put('/:id', withAuth, (req, res) => {
   })
     .then(dbUserData => {
       if (!dbUserData[0]) {
-        res.status(404).json({ message: 'No user found with this id' });
+        res.status(404).json({ message: 'No user found with this id '});
         return;
       }
       res.json(dbUserData);
