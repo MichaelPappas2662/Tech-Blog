@@ -4,52 +4,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tech X</title>
-  <!-- CSS only -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link rel="stylesheet" href="/public/css/styles.css">
+  <title>Technically  Blogging X</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 
-<body>
-  <div>
+  <div class="wrapper">
     <header>
-      <h1 class="nav-item">
-        <a class="nav-link" href="/">Just Tech</a>
-      </h1>
-      <h3 class="nav-item">
-        {{#if loggedIn}}
-          <a class="nav-link" href="/dashboard">Your Dashboard</a>
-      </h3>
-      <nav class="nav-link">
-         <button id="logout" class="nav-link active">logout</button>
-        {{else}}
-         <a class="nav-link navbar-right" href="/login">login</a>
-        {{/if}}
-      </nav>
+        <h1 class="has-text-black px-3 py-3 has-text-weight-bold">technically blogging: a tech blog</h1>
+        <nav class="navbar mt-2">
+            {{#if loggedIn}}
+            <a href="/" class="navbar-item is-hoverable pt-1">homepage</a>
+            <a href="/dashboard" class="navbar-item is-hoverable pt-1">dashboard</a>
+            <a href="/dashboard/create/" class="navbar-item is-hoverable pt-1 mr-4">create post</a>
+            <button id="logout" class="button is-danger">logout</button>
+            {{else}}
+            <a href="/" class="navbar-item is-hoverable pt-1">homepage</a>
+            <a href="/login" class="button is-primary">login</a>
+            {{/if}}
+        </nav>
     </header>
-    <main class="main-body">
-      {{{ body }}}
+
+    <main>
+            {{{ body }}}
     </main>
-    <footer class="nav justify-content-center">
-      <h3 class="nav-item">
-        <a class="nav-link" href="/">Tech X</a>
-      </h3>
-      <h3 class="nav-item">
-        <a class="nav-link" href="https://github.com/MichaelPappas2662">Michael Pappas</a>
-      </h3>
-      <h3 class="nav-item">
-        <a class="nav-link" href="https://github.com/MichaelPappas2662/Tech-Blog">Blog Repo</a> 
-      </h3>
-      <h3 class="nav-item">
-        <a class="nav-link" href="mailto:mixalis.pappas23@gmail.com">Email</a>
-      </h3>
+
+    <footer class="footer rows pb-2">
+        <div class="row-is-full content has-text-centered">
+            <p>
+            <a href="/">homepage</a>{{#if loggedIn}} | 
+            <a href="/dashboard/">dashboard</a> | 
+            <a href="/dashboard/create/">create new post</a>
+            {{else}}
+             | <a href="/login/">login</a>
+            {{/if}}
+            </p>
+        </div>
+      <div class="row-is-full content has-text-centered">
+    <p>
+      <strong>technically blogging</strong> by <a href="https://github.com/MichaelPappas2662">Michael Pappas</a> | made with <a href="https://bulma.io/">bulma</a> | source code:
+      <a href="https://github.com/MichaelPappas2662/Tech-Blog"><i class="fab fa-github"></i></a> |  
+       <a href="mailto:mixalis.pappas23@gmail.com"><i class="far fa-envelope"></i></a>
+    </p>
+  </div>
     </footer>
   </div>
 
-  {{#if loggedIn}}
-  <script src="/public/js/logout.js"></script>
-  {{/if}}
-
+{{#if loggedIn}}
+<script src="/js/logout.js"></script>
+{{/if}}
 </body>
 
 </html>
