@@ -1,17 +1,27 @@
-<section class="container">
-  <p class="wrong font f500"> Account exists or the password is too short </p>
-    <form class="form signup-form font">
-        <div class="form-group">
-          <input class="form-input" type="text" id="name-sign"  placeholder="Name" required/>
-        </div>
-      <div class="form-group">
-        <input class="form-input" type="text" id="email-sign"  placeholder="Email" required/>
-      </div>
-      <div class="form-group">
-        <input class="form-input" type="password" id="password-sign" placeholder="Password (min 8)" required/>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary log" type="submit">Sign Up</button>
-      </div>
-    </form>
-</section>
+<div class="column">
+<h2 class="title pb-4">create new account:</h2><hr>
+<form class="signup-form">
+  <div>
+    <label for="username-signup">username:</label>
+    <input type="text" id="username-signup" />
+  </div>
+  <div>
+    <label for="email-signup">email:</label>
+    <input type="text" id="email-signup" />
+  </div>
+    <div>
+    <label for="github-signup">github:</label>
+    <input type="text" id="github-signup" />
+  </div>
+  <div>
+    <label for="password-signup">password:</label>
+    <input type="password" id="password-signup" />
+  </div>
+  <div>
+    <button type="submit" class="button is-primary">signup</button>
+  </div>
+</form>
+</div>
+
+<!-- javascript file-->
+<script src="/js/signup.js"></script>
