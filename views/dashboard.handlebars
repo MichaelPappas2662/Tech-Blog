@@ -1,35 +1,20 @@
-<section>
-   <h2>Create New Post</h2>
-
-   <form class="new-post-form">
-      <div>
-         <label for="post-title">Title</label>
-         <input type="text" id="post-title" name="post-title" />
-      </div>
-      <div>
-         <label for="post-url">Tell us more</label>
-         <input type="text" id="post-url" name="post-url" />
-      </div>
-      <button type="submit" class="btn">Create</button>
-   </form>
-</section>
-
+    <div class="mb-5 pt-3">
+        <a href="/dashboard/create/"><button id="create-post" class="button is-primary is-pulled-right">create post</button></a>
+        
+        <h2 class="title pb-4">dashboard: your posts</h2><hr>
 {{#if posts.length}}
-<section>
-   <h2>Your Posts</h2>
-   <div>
-      <ol>
-      {{#each posts as |post|}}
-         <li>
-            {{> post-info post }}
-            <button class="edit">
-               <a href="/dashboard/edit/{{post.id}}">Edit post</a>
-            </button>
-         </li>
-      {{/each}}
-      </ol>
-   </div>
-</section>
+    </div>
+
+    {{#each posts as |post|}}
+        {{> post-info post}}
+        
+            <a href="/dashboard/edit/{{post.id}}"><button class="button mb-5 ml-5 is-warning">edit post</button></a>
+        </div>
+    {{/each}}
+
+{{else}}
+<h6 class="pb-4 has-text-centered is-italic">you do not currently have any posts</h6>
+
 {{/if}}
 
-<script src="/public/js/add-post.js"></script>
+
