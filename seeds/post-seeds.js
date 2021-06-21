@@ -1,26 +1,32 @@
 const { Post } = require('../models');
 
-const postData = [{
-  title: 'Fear of Job Insecurity',
-  content: 'I am afraid to leave my current job in pursuit of an internship.',
-  user_id: 1
+const postData = [
+  {
+    title: 'Taskmaster goes public!',
+    post_content: 'Taskinator is a task-tracker app that will allow you to organize your personal to-do list items by clicking and dragging them into categories like To Do, In Progress, and Completed.',
+    user_id: 3
+  },
+  {
+    title: 'Zoo Keepr reaches 1 million subscribers!',
+    post_content: 'The local zoo has received funding to build a new online catalog, and they\'ve asked to create a web server for a front-end application they’re developing, called Zoo Keepr. This site’s data will be stored on the server. This will allow animal enthusiasts to access the data from different locations and browsers without needing to download it to their device',
+    user_id: 1
+  },
+  {
+    title: 'Work Day Scheduler tool now available!',
+    post_content: 'A simple calendar application that allows a user to save events for each hour of the day. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery. Use Moment.js library to work with date and time',
+    user_id: 2
 
-},
-{
-  title: 'So much to learn!',
-  content: 'Are we guinea pigs on a wheel? I think not! Why is it then that we are expected to learn so many new concepts in so little time?',
-  user_id: 2
-},
-{
-  title: 'Perpetually burnt out',
-  content: 'What is the point of pursuing a better life thanks to tech, when all I feel like is a cog in the machine, for years now? And I still have not landed my first job?',
-  user_id: 3
-},
-{
-  title: 'I miss socializing',
-  content: 'I got into tech for a better life, but it takes so long just to get your first job. I just wish it got easier. I wish I could be coddled, or I wish I could be strong enough. I wish I could be loved. I wish I had balance. I wish I had a teacher on command. Oh well... Im venting. I just wish I enjoyed my situation more.',
-  user_id: 4
-}
+  },
+  {
+    title: 'Tech Blog has been released!',
+    post_content: 'A CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well. This site will be built from scratch and deployed to Heroku. The app will follow MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication',
+    user_id: 5
+  },
+  {
+    title: 'Just Tech News goes public!',
+    post_content: 'Just Tech News—a tech news website where users can post, upvote, and comment on links to news articles. Use Sequelize, an object-relational mapping (ORM) library, to simplify your MySQL queries, add password hashing so that users can create secure passwords, and connect your application to JawsDB, a MySQL add-on for Heroku',
+    user_id: 4
+  }
 ];
 
 const seedPosts = () => Post.bulkCreate(postData);

@@ -1,29 +1,48 @@
 const { Comment } = require('../models');
 
-const commentData = [{
-  comment_text: 'I deserve to get hired.',
-  user_id: 1,
-  post_id: 1
-},
-{
-  comment_text: 'I hope this recruiter can help...',
-  user_id: 2,
-  post_id: 2
-},
-{
-  comment_text: 'I don\'t even know if I want to code anymore!',
-  user_id: 3,
-  post_id: 3
-},
-{
-  comment_text: 'Don\'t let yourself get burnt out',
-  user_id: 4,
-  post_id: 4
-}
+const commentData = [
+  {
+    user_id: 1,
+    post_id: 5,
+    comment_text: 'This is amazing!'
+  },
+  {
+    user_id: 4,
+    post_id: 4,
+    comment_text: 'Wow, amazing work!'
+  },
+  {
+    user_id: 1,
+    post_id: 4,
+    comment_text: 'Awesome! kudos to everyone who have contributed'
+  },
+  {
+    user_id: 3,
+    post_id: 5,
+    comment_text: 'We just reached a million subscribers! Fantastic!'
+  },
+  {
+    user_id: 3,
+    post_id: 2,
+    comment_text: 'This is great news!'
+  },
+  {
+    user_id: 3,
+    post_id: 4,
+    comment_text: 'This is one of our biggest and the most awaited feature. Keep up the good work!'
+  },
+  {
+    user_id: 5,
+    post_id: 3,
+    comment_text: 'Very useful tool!'
+  },
+  {
+    user_id: 2,
+    post_id: 1,
+    comment_text: 'Nice tool!'
+  }
 ];
 
-// here we edit more than one record at a time by utilizing bulkCreate
-// we will use the above array of objects to seed our database with some sample comments
 const seedComments = () => Comment.bulkCreate(commentData);
 
 module.exports = seedComments;
