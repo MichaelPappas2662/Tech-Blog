@@ -1,20 +1,25 @@
-<article class="post">
-  <div class="title card">
-    <div class="card-header">
-      <h3 class="card-title">{{title}}</h3>
-    </div>
-    <div class="card-body">
-      <p class="card-text ">{{post_url}}</p>
-    </div>
+<div class="card mb-6">
+  <header class="card-header card-header-title has-background-grey-lighter">
     
-  
-    <div class="meta card-footer">
-      {{vote_count}} {{format_plural "point" vote_count}} by {{user.username}} on
-      {{format_date created_at}}
-      |
-      <a class="card-footer" href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
-      
-    </div>
+        <div class="column">
+            <p class=" has-text-primary-light"></p>
+      <a href="/post/{{id}}"  class="has-text-black is-capitalized is-pulled-left">{{title}} </a></p>
+      </div>
 
-  </div>
-</article>
+      <div class="column">
+      <span class=""> </span>
+      </div>
+    
+  </header>
+
+    <div class="card-content">
+        <div class="content has-text-justified">
+            {{post_content}}
+        </div>
+            <div class="is-pulled-right">
+                <b>{{user.username}}</b> | 
+                <a href="https://github.com/{{user.github}}"><i class="fab fa-github"></i></a>
+                 | {{format_date created_at}} | <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+            </div>
+        
+    </div>
