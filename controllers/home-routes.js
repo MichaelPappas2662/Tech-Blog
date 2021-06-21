@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 
 router.get('/', (req, res) => {
@@ -8,10 +7,9 @@ router.get('/', (req, res) => {
   Post.findAll({
     attributes: [
       'id',
-      // 'post_url',
       'title',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+      'post_content'
     ],
     include: [
       {
@@ -19,17 +17,16 @@ router.get('/', (req, res) => {
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['username']
+          attributes: ['username', 'github']
         }
       },
       {
         model: User,
-        attributes: ['username']
+        attributes: ['username', 'github']
       }
     ]
   })
     .then(dbPostData => {
-      console.log(dbPostData[0]);
       const posts = dbPostData.map(post => post.get({ plain: true }));
       res.render('homepage', {
         posts,
@@ -51,6 +48,15 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get('/signup', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('signup');
+});
+
 router.get('/post/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -58,10 +64,9 @@ router.get('/post/:id', (req, res) => {
     },
     attributes: [
       'id',
-      'post_url',
       'title',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+      'post_content'
     ],
     include: [
       {
@@ -69,12 +74,12 @@ router.get('/post/:id', (req, res) => {
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['username']
+          attributes: ['username', 'github']
         }
       },
       {
         model: User,
-        attributes: ['username']
+        attributes: ['username', 'github']
       }
     ]
   })
@@ -84,7 +89,10 @@ router.get('/post/:id', (req, res) => {
         return;
       }
 
+      // serialize the data
       const post = dbPostData.get({ plain: true });
+
+      // pass data to template
       res.render('single-post', {
         post,
         loggedIn: req.session.loggedIn
