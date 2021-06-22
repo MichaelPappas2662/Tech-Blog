@@ -1,9 +1,9 @@
 :root {
-  --primary: #c5c5c5;
-  --secondary: #afb4b4;
-  --tertiary: #0e1fbb;
-  --light-dark: #24055d;
-  --dark: #3b7cd1;
+  --primary: #2e84be;
+  --secondary: #010202;
+  --tertiary: #fbfbfb;
+  --light-dark: #e01a1a;
+  --dark: rgba(180, 180, 180, 0.774);
   --border-radius: 0.3rem;
 }
 
@@ -103,7 +103,7 @@ input {
 
 .navbar {
   width: 100%;
-  position: fixed;
+  /* position: fixed; */
   background-color: var(--dark);
 }
 
@@ -112,13 +112,13 @@ input {
 }
 
 .nav-item a {
-  color: var(--primary);
+  color: var(white);
 }
 
 .hero {
   padding: 3% 4%;
-  background-color: var(--dark);
-  color: var(--primary);
+  background-color: var(blue);
+  color: var(white);
 }
 
 .hero p {
